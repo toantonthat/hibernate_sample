@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="HIBERNATE_CACHE"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+	updateCheck="true" monitoring="autodetect" dynamicConfig="true">
+
+	<diskStore path="java.io.tmpdir/ehcache" />
+
+	<cache 
+	   name="com.spring.security.entity.Department" 
+	   maxEntriesLocalHeap="10000"
+	   eternal="false" 
+	   timeToIdleSeconds="300" 
+	   timeToLiveSeconds="600"
+	   memoryStoreEvictionPolicy="FIFO">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache 
+	   name="com.spring.security.entity.Employee" 
+	   maxEntriesLocalHeap="10000"
+	   eternal="false" 
+	   timeToIdleSeconds="5" 
+	   timeToLiveSeconds="60"
+	   memoryStoreEvictionPolicy="FIFO">
+		<persistence strategy="localTempSwap" />
+	</cache>
+    
+    <!-- 
+	<cache name="bankCache" maxEntriesLocalHeap="10000"
+		eternal="false" timeToIdleSeconds="5" timeToLiveSeconds="60"
+		memoryStoreEvictionPolicy="FIFO">
+		<persistence strategy="localTempSwap" />
+	</cache> -->
+
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		maxEntriesLocalHeap="5" eternal="false" timeToLiveSeconds="120">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		maxEntriesLocalHeap="5000" eternal="true">
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<defaultCache maxElementsInMemory="5" eternal="false"
+		timeToIdleSeconds="20" timeToLiveSeconds="20" overflowToDisk="false"
+		diskPersistent="false" memoryStoreEvictionPolicy="LRU">
+	</defaultCache>
+
+</ehcache>
